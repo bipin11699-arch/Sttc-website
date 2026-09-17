@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ST&TC Admin</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f2f6fb;
+}
+.header{
+  background:#0756a5;
+  color:white;
+  padding:18px;
+  text-align:center;
+}
+.container{
+  max-width:600px;
+  margin:20px auto;
+  padding:15px;
+}
+.card{
+  background:white;
+  padding:20px;
+  margin-bottom:18px;
+  border-radius:12px;
+  box-shadow:0 3px 12px #0002;
+}
+h2{color:#0756a5;}
+input{
+  width:100%;
+  padding:12px;
+  margin:8px 0 15px;
+  box-sizing:border-box;
+}
+button{
+  background:#0756a5;
+  color:white;
+  border:0;
+  padding:12px 20px;
+  border-radius:7px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>ST&TC Admin Panel</h1>
+  <p>Shubham Test & Training Centre</p>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h2>🖼️ Change Logo</h2>
+<input type="file" accept="image/*">
+<button>Upload Logo</button>
+</div>
+
+<div class="card">
+<h2>📢 Advertisement</h2>
+<input type="file" accept="image/*">
+<button>Upload Advertisement</button>
+</div>
+
+<div class="card">
+<h2>📋 Company Requirement</h2>
+<input type="file" accept="image/*">
+<button>Upload Requirement</button>
+</div>
+
+</div>
+
+</body>
+</html>
