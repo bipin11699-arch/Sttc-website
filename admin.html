@@ -1,13 +1,8 @@
 
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ST&TC Admin Panel</title>
-
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ST&TC Admin Panel</title><style>
 *{
   box-sizing:border-box;
 }
@@ -19,7 +14,7 @@ body{
 }
 
 .header{
-  background:#0756a5;
+  background:linear-gradient(135deg,#003b73,#006bb3);
   color:white;
   padding:20px 15px;
   text-align:center;
@@ -32,10 +27,12 @@ body{
 
 .header p{
   margin:6px 0 0;
+  color:#ffd34f;
+  font-weight:bold;
 }
 
 .container{
-  max-width:600px;
+  max-width:650px;
   margin:auto;
   padding:18px;
 }
@@ -80,11 +77,12 @@ button:active{
 .preview{
   display:none;
   width:100%;
-  max-height:300px;
+  max-height:320px;
   object-fit:contain;
   margin:12px 0;
   border-radius:10px;
   border:1px solid #ddd;
+  background:#f7f7f7;
 }
 
 .info{
@@ -95,91 +93,282 @@ button:active{
   font-size:14px;
   line-height:1.5;
 }
-</style>
-</head>
 
-<body>
+.requirement-title{
+  color:#003b73;
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:5px;
+}
 
-<div class="header">
+.status{
+  display:none;
+  margin-top:10px;
+  padding:10px;
+  border-radius:8px;
+  background:#e8f7ed;
+  color:#16733a;
+  font-weight:bold;
+}
+</style></head><body><div class="header">
   <h1>ST&TC Admin Panel</h1>
   <p>Shubham Test & Training Centre</p>
+</div><div class="container">  <!-- LOGO -->  <div class="card">
+    <h2>🖼️ Change Logo</h2><input
+  type="file"
+  id="logoInput"
+  accept="image/*"
+  onchange="previewImage(this,'logoPreview')"
+>
+
+<img id="logoPreview" class="preview">
+
+<button onclick="showMessage('Logo selected successfully.')">
+  Select Logo
+</button>
+
+<div class="info">
+  Current website logo file:
+  <b>logo.jpg</b>
 </div>
 
-<div class="container">
+  </div>  <!-- ADVERTISEMENT -->  <div class="card">
+    <h2>📢 Advertisement</h2><input
+  type="file"
+  id="adInput"
+  accept="image/*"
+  onchange="previewImage(this,'adPreview')"
+>
 
-  <!-- LOGO -->
-  <div class="card">
-    <h2>🖼️ Change Logo</h2>
+<img id="adPreview" class="preview">
 
-    <input
-      type="file"
-      id="logoInput"
-      accept="image/*"
-      onchange="previewImage(this,'logoPreview')"
-    >
+<button onclick="showMessage('Advertisement selected successfully.')">
+  Select Advertisement
+</button>
 
-    <img id="logoPreview" class="preview">
-
-    <button onclick="showMessage('Logo selected. अब इस image को GitHub में upload करें।')">
-      Select Logo
-    </button>
-
-    <div class="info">
-      Logo file का नाम रखें: <b>logo.png</b>
-    </div>
-  </div>
-
-
-  <!-- ADVERTISEMENT -->
-  <div class="card">
-    <h2>📢 Advertisement</h2>
-
-    <input
-      type="file"
-      id="adInput"
-      accept="image/*"
-      onchange="previewImage(this,'adPreview')"
-    >
-
-    <img id="adPreview" class="preview">
-
-    <button onclick="showMessage('Advertisement selected. अब इस image को GitHub में upload करें।')">
-      Select Advertisement
-    </button>
-
-    <div class="info">
-      Advertisement file का नाम रखें: <b>advertisement.jpg</b>
-    </div>
-  </div>
-
-
-  <!-- REQUIREMENT -->
-  <div class="card">
-    <h2>📋 Company Requirement</h2>
-
-    <input
-      type="file"
-      id="requirementInput"
-      accept="image/*"
-      onchange="previewImage(this,'requirementPreview')"
-    >
-
-    <img id="requirementPreview" class="preview">
-
-    <button onclick="showMessage('Requirement selected. अब इस image को GitHub में upload करें।')">
-      Select Requirement
-    </button>
-
-    <div class="info">
-      Requirement file का नाम रखें:
-      <b>requirement.jpg</b>
-    </div>
-  </div>
-
+<div class="info">
+  Advertisement file name:
+  <b>advertisement.jpg</b>
 </div>
 
+  </div>  <!-- REQUIREMENT 1 -->  <div class="card"><div class="requirement-title">
+  📋 Requirement 1
+</div>
 
-<script>
+<input
+  type="file"
+  id="requirement1"
+  accept="image/*"
+  onchange="previewImage(this,'preview1')"
+>
+
+<img id="preview1" class="preview">
+
+<button onclick="showMessage('Requirement 1 selected successfully.')">
+  Select Requirement 1
+</button>
+
+<div class="status" id="status1">
+  ✅ Requirement 1 Selected
+</div>
+
+  </div>  <!-- REQUIREMENT 2 -->  <div class="card"><div class="requirement-title">
+  📋 Requirement 2
+</div>
+
+<input
+  type="file"
+  id="requirement2"
+  accept="image/*"
+  onchange="previewImage(this,'preview2')"
+>
+
+<img id="preview2" class="preview">
+
+<button onclick="showMessage('Requirement 2 selected successfully.')">
+  Select Requirement 2
+</button>
+
+<div class="status" id="status2">
+  ✅ Requirement 2 Selected
+</div>
+
+  </div>  <!-- REQUIREMENT 3 -->  <div class="card"><div class="requirement-title">
+  📋 Requirement 3
+</div>
+
+<input
+  type="file"
+  id="requirement3"
+  accept="image/*"
+  onchange="previewImage(this,'preview3')"
+>
+
+<img id="preview3" class="preview">
+
+<button onclick="showMessage('Requirement 3 selected successfully.')">
+  Select Requirement 3
+</button>
+
+<div class="status" id="status3">
+  ✅ Requirement 3 Selected
+</div>
+
+  </div>  <!-- REQUIREMENT 4 -->  <div class="card"><div class="requirement-title">
+  📋 Requirement 4
+</div>
+
+<input
+  type="file"
+  id="requirement4"
+  accept="image/*"
+  onchange="previewImage(this,'preview4')"
+>
+
+<img id="preview4" class="preview">
+
+<button onclick="showMessage('Requirement 4 selected successfully.')">
+  Select Requirement 4
+</button>
+
+<div class="status" id="status4">
+  ✅ Requirement 4 Selected
+</div>
+
+  </div>  <!-- REQUIREMENT 5 -->  <div class="card"><div class="requirement-title">
+  📋 Requirement 5
+</div>
+
+<input
+  type="file"
+  id="requirement5"
+  accept="image/*"
+  onchange="previewImage(this,'preview5')"
+>
+
+<img id="preview5" class="preview">
+
+<button onclick="showMessage('Requirement 5 selected successfully.')">
+  Select Requirement 5
+</button>
+
+<div class="status" id="status5">
+  ✅ Requirement 5 Selected
+</div>
+
+  </div>  <!-- REQUIREMENT 6 -->  <div class="card"><div class="requirement-title">
+  📋 Requirement 6
+</div>
+
+<input
+  type="file"
+  id="requirement6"
+  accept="image/*"
+  onchange="previewImage(this,'preview6')"
+>
+
+<img id="preview6" class="preview">
+
+<button onclick="showMessage('Requirement 6 selected successfully.')">
+  Select Requirement 6
+</button>
+
+<div class="status" id="status6">
+  ✅ Requirement 6 Selected
+</div>
+
+  </div>  <!-- REQUIREMENT 7 -->  <div class="card"><div class="requirement-title">
+  📋 Requirement 7
+</div>
+
+<input
+  type="file"
+  id="requirement7"
+  accept="image/*"
+  onchange="previewImage(this,'preview7')"
+>
+
+<img id="preview7" class="preview">
+
+<button onclick="showMessage('Requirement 7 selected successfully.')">
+  Select Requirement 7
+</button>
+
+<div class="status" id="status7">
+  ✅ Requirement 7 Selected
+</div>
+
+  </div>  <!-- REQUIREMENT 8 -->  <div class="card"><div class="requirement-title">
+  📋 Requirement 8
+</div>
+
+<input
+  type="file"
+  id="requirement8"
+  accept="image/*"
+  onchange="previewImage(this,'preview8')"
+>
+
+<img id="preview8" class="preview">
+
+<button onclick="showMessage('Requirement 8 selected successfully.')">
+  Select Requirement 8
+</button>
+
+<div class="status" id="status8">
+  ✅ Requirement 8 Selected
+</div>
+
+  </div>  <!-- REQUIREMENT 9 -->  <div class="card"><div class="requirement-title">
+  📋 Requirement 9
+</div>
+
+<input
+  type="file"
+  id="requirement9"
+  accept="image/*"
+  onchange="previewImage(this,'preview9')"
+>
+
+<img id="preview9" class="preview">
+
+<button onclick="showMessage('Requirement 9 selected successfully.')">
+  Select Requirement 9
+</button>
+
+<div class="status" id="status9">
+  ✅ Requirement 9 Selected
+</div>
+
+  </div>  <!-- REQUIREMENT 10 -->  <div class="card"><div class="requirement-title">
+  📋 Requirement 10
+</div>
+
+<input
+  type="file"
+  id="requirement10"
+  accept="image/*"
+  onchange="previewImage(this,'preview10')"
+>
+
+<img id="preview10" class="preview">
+
+<button onclick="showMessage('Requirement 10 selected successfully.')">
+  Select Requirement 10
+</button>
+
+<div class="status" id="status10">
+  ✅ Requirement 10 Selected
+</div>
+
+  </div>  <div class="card">
+    <h2>ℹ️ Important</h2><div class="info">
+  अभी फोटो केवल preview होती है।<br><br>
+  अगला step Firebase से जोड़ने के बाद
+  Requirement images वेबसाइट पर automatically दिखाई देंगी।
+</div>
+
+  </div></div><script>
 
 function previewImage(input,previewId){
 
@@ -194,16 +383,20 @@ function previewImage(input,previewId){
   preview.src=URL.createObjectURL(file);
 
   preview.style.display="block";
+
+  const number=previewId.replace("preview","");
+
+  const status=document.getElementById("status"+number);
+
+  if(status){
+    status.style.display="block";
+  }
 }
 
 
 function showMessage(message){
-
   alert(message);
-
 }
 
-</script>
-
-</body>
+</script></body>
 </html>
