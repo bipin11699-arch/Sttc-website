@@ -1,1 +1,209 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ST&TC Admin Panel</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f2f6fb;
+}
+
+.header{
+  background:#0756a5;
+  color:white;
+  padding:20px 15px;
+  text-align:center;
+}
+
+.header h1{
+  margin:0;
+  font-size:25px;
+}
+
+.header p{
+  margin:6px 0 0;
+}
+
+.container{
+  max-width:600px;
+  margin:auto;
+  padding:18px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  margin-bottom:18px;
+  border-radius:14px;
+  box-shadow:0 3px 12px #0002;
+}
+
+h2{
+  color:#0756a5;
+  margin-top:0;
+}
+
+input[type="file"]{
+  width:100%;
+  padding:12px;
+  margin:8px 0 15px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  background:#fafafa;
+}
+
+button{
+  width:100%;
+  background:#0756a5;
+  color:white;
+  border:0;
+  padding:13px;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:bold;
+}
+
+button:active{
+  transform:scale(.98);
+}
+
+.preview{
+  display:none;
+  width:100%;
+  max-height:300px;
+  object-fit:contain;
+  margin:12px 0;
+  border-radius:10px;
+  border:1px solid #ddd;
+}
+
+.info{
+  background:#fff8df;
+  padding:12px;
+  border-radius:8px;
+  margin-top:10px;
+  font-size:14px;
+  line-height:1.5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>ST&TC Admin Panel</h1>
+  <p>Shubham Test & Training Centre</p>
+</div>
+
+<div class="container">
+
+  <!-- LOGO -->
+  <div class="card">
+    <h2>🖼️ Change Logo</h2>
+
+    <input
+      type="file"
+      id="logoInput"
+      accept="image/*"
+      onchange="previewImage(this,'logoPreview')"
+    >
+
+    <img id="logoPreview" class="preview">
+
+    <button onclick="showMessage('Logo selected. अब इस image को GitHub में upload करें।')">
+      Select Logo
+    </button>
+
+    <div class="info">
+      Logo file का नाम रखें: <b>logo.png</b>
+    </div>
+  </div>
+
+
+  <!-- ADVERTISEMENT -->
+  <div class="card">
+    <h2>📢 Advertisement</h2>
+
+    <input
+      type="file"
+      id="adInput"
+      accept="image/*"
+      onchange="previewImage(this,'adPreview')"
+    >
+
+    <img id="adPreview" class="preview">
+
+    <button onclick="showMessage('Advertisement selected. अब इस image को GitHub में upload करें।')">
+      Select Advertisement
+    </button>
+
+    <div class="info">
+      Advertisement file का नाम रखें: <b>advertisement.jpg</b>
+    </div>
+  </div>
+
+
+  <!-- REQUIREMENT -->
+  <div class="card">
+    <h2>📋 Company Requirement</h2>
+
+    <input
+      type="file"
+      id="requirementInput"
+      accept="image/*"
+      onchange="previewImage(this,'requirementPreview')"
+    >
+
+    <img id="requirementPreview" class="preview">
+
+    <button onclick="showMessage('Requirement selected. अब इस image को GitHub में upload करें।')">
+      Select Requirement
+    </button>
+
+    <div class="info">
+      Requirement file का नाम रखें:
+      <b>requirement.jpg</b>
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+
+function previewImage(input,previewId){
+
+  const file=input.files[0];
+
+  if(!file){
+    return;
+  }
+
+  const preview=document.getElementById(previewId);
+
+  preview.src=URL.createObjectURL(file);
+
+  preview.style.display="block";
+}
+
+
+function showMessage(message){
+
+  alert(message);
+
+}
+
+</script>
+
+</body>
+</html>
