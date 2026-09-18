@@ -1,1 +1,615 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ST&TC | Shubham Test & Training Centre Mirganj</title><meta name="description"
+content="ST&TC Shubham Test & Training Centre Mirganj - Overseas Jobs, Interview Preparation, Documentation Support and Career Guidance.">
 
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f7fb;
+  color:#172033;
+  line-height:1.6;
+}
+
+/* HEADER */
+header{
+  background:linear-gradient(135deg,#002f63,#006bb6);
+  color:#fff;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 4px 15px rgba(0,0,0,.18);
+}
+
+.header-content{
+  max-width:1150px;
+  margin:auto;
+  min-height:74px;
+  padding:10px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.logo{
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  background:#fff;
+  object-fit:contain;
+  padding:4px;
+  border:2px solid #ffd34f;
+}
+
+.brand h1{
+  font-size:22px;
+  letter-spacing:1px;
+}
+
+.brand p{
+  font-size:10px;
+  color:#ffd34f;
+  font-weight:bold;
+  letter-spacing:.4px;
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:bold;
+  transition:.25s;
+}
+
+nav a:hover{
+  color:#ffd34f;
+}
+
+/* HERO */
+.hero{
+  min-height:560px;
+  display:flex;
+  align-items:center;
+  text-align:center;
+  color:#fff;
+  padding:70px 20px;
+  background:
+  linear-gradient(rgba(0,38,78,.84),rgba(0,38,78,.88)),
+  url("https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80")
+  center/cover;
+}
+
+.hero-content{
+  max-width:900px;
+  margin:auto;
+}
+
+.hero-badge{
+  display:inline-block;
+  padding:7px 16px;
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:30px;
+  margin-bottom:20px;
+  font-size:13px;
+  background:rgba(255,255,255,.08);
+}
+
+.hero h2{
+  font-size:45px;
+  line-height:1.2;
+  margin-bottom:18px;
+}
+
+.hero h2 span{
+  color:#ffd34f;
+}
+
+.hero p{
+  max-width:780px;
+  margin:0 auto 30px;
+  font-size:18px;
+  color:#f1f6ff;
+}
+
+.btn{
+  display:inline-block;
+  padding:13px 23px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  margin:5px;
+  transition:.3s;
+}
+
+.btn-primary{
+  background:#ffd34f;
+  color:#003b73;
+}
+
+.btn-light{
+  background:#fff;
+  color:#003b73;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 7px 18px rgba(0,0,0,.25);
+}
+
+/* SECTIONS */
+section{
+  max-width:1150px;
+  margin:auto;
+  padding:70px 20px;
+  scroll-margin-top:85px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:38px;
+}
+
+.section-title h2{
+  color:#003b73;
+  font-size:32px;
+}
+
+.section-title span{
+  display:block;
+  width:65px;
+  height:4px;
+  background:#e1ae00;
+  margin:11px auto;
+  border-radius:10px;
+}
+
+/* ABOUT */
+.about-box{
+  background:#fff;
+  padding:35px;
+  border-radius:18px;
+  box-shadow:0 7px 25px rgba(0,0,0,.07);
+  text-align:center;
+  border-top:4px solid #0066b3;
+}
+
+.about-box p{
+  font-size:17px;
+  margin-bottom:15px;
+}
+
+.reg{
+  display:inline-block;
+  background:#eef6ff;
+  color:#003b73;
+  padding:9px 18px;
+  border-radius:25px;
+  font-weight:bold;
+  margin-top:5px;
+}
+
+/* SERVICES */
+.services{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.service-card{
+  background:#fff;
+  padding:30px 20px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 7px 22px rgba(0,0,0,.07);
+  border-bottom:4px solid #0066b3;
+  transition:.3s;
+}
+
+.service-card:hover{
+  transform:translateY(-7px);
+}
+
+.service-icon{
+  font-size:40px;
+  margin-bottom:12px;
+}
+
+.service-card h3{
+  color:#003b73;
+  margin-bottom:8px;
+}
+
+.service-card p{
+  color:#555;
+  font-size:15px;
+}
+
+/* REQUIREMENT */
+.requirement-box{
+  background:#fff;
+  padding:40px 22px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 7px 25px rgba(0,0,0,.07);
+  border-top:4px solid #e1ae00;
+}
+
+.requirement-box h3{
+  color:#003b73;
+  font-size:25px;
+  margin-bottom:10px;
+}
+
+.requirement-box p{
+  color:#666;
+  margin-bottom:18px;
+}
+
+.no-requirement{
+  display:inline-block;
+  background:#f4f6f8;
+  padding:12px 20px;
+  border-radius:8px;
+  color:#555;
+  font-weight:bold;
+}
+
+/* CONTACT */
+.contact-container{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.contact-box{
+  background:#fff;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 7px 25px rgba(0,0,0,.07);
+}
+
+.contact-box h3{
+  color:#003b73;
+  margin-bottom:18px;
+  font-size:23px;
+}
+
+.contact-item{
+  margin:16px 0;
+  font-size:16px;
+}
+
+.contact-item strong{
+  color:#003b73;
+}
+
+.contact-item a{
+  color:#0066b3;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.contact-buttons{
+  margin-top:20px;
+}
+
+/* LOCATION */
+.location-card{
+  margin-top:25px;
+  background:#fff;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 7px 25px rgba(0,0,0,.07);
+}
+
+/* FOOTER */
+footer{
+  background:#002b52;
+  color:#fff;
+  text-align:center;
+  padding:35px 15px;
+}
+
+footer h3{
+  color:#ffd34f;
+  font-size:24px;
+  margin-bottom:7px;
+}
+
+footer p{
+  font-size:14px;
+  margin:5px 0;
+  color:#e8eef5;
+}
+
+.footer-phone{
+  font-size:17px;
+  font-weight:bold;
+  color:#ffd34f;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .header-content{
+    flex-direction:column;
+    padding:12px 10px;
+  }
+
+  .brand{
+    width:100%;
+    justify-content:center;
+  }
+
+  nav{
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:9px 15px;
+    padding-bottom:4px;
+  }
+
+  nav a{
+    font-size:12px;
+  }
+
+  .hero{
+    min-height:530px;
+    padding:55px 18px;
+  }
+
+  .hero h2{
+    font-size:32px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .services{
+    grid-template-columns:1fr;
+  }
+
+  .contact-container{
+    grid-template-columns:1fr;
+  }
+
+  .section-title h2{
+    font-size:28px;
+  }
+
+  section{
+    padding:55px 15px;
+  }
+
+  .about-box,
+  .contact-box{
+    padding:25px 18px;
+  }
+}
+</style></head><body><!-- HEADER --><header>
+  <div class="header-content"><div class="brand">
+  <img src="logo.png"
+       alt="ST&TC Logo"
+       class="logo"
+       onerror="this.style.display='none'">
+
+  <div>
+    <h1>ST&TC</h1>
+    <p>SHUBHAM TEST & TRAINING CENTRE</p>
+  </div>
+</div>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#requirement">Requirement</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+  </div>
+</header><!-- HOME --><section id="home" class="hero">  <div class="hero-content"><div class="hero-badge">
+  📍 Mirganj, Gopalganj, Bihar
+</div>
+
+<h2>
+  Welcome To <span>ST&TC</span>
+</h2>
+
+<p>
+  Professional Test & Training Centre for Overseas Jobs,
+  Interview Preparation, Documentation Support and Career Guidance.
+</p>
+
+<a href="#requirement" class="btn btn-primary">
+  📋 View Requirements
+</a>
+
+<a href="tel:7870820014" class="btn btn-light">
+  📞 Call Now
+</a>
+
+  </div></section><!-- ABOUT --><section id="about">  <div class="section-title">
+    <h2>About ST&TC</h2>
+    <span></span>
+  </div>  <div class="about-box"><p>
+  <strong>Shubham Test & Training Centre (ST&TC)</strong>
+  is a professional test and training centre based in
+  <strong>Mirganj, Gopalganj, Bihar.</strong>
+</p>
+
+<p>
+  We provide training, interview preparation,
+  documentation support and career guidance for candidates
+  looking for overseas employment opportunities.
+</p>
+
+<div class="reg">
+  Registration No.: BR-13-0006578
+</div>
+
+  </div></section><!-- SERVICES --><section id="services">  <div class="section-title">
+    <h2>Our Services</h2>
+    <span></span>
+  </div>  <div class="services"><div class="service-card">
+  <div class="service-icon">🌍</div>
+  <h3>Overseas Jobs</h3>
+  <p>Support for overseas employment opportunities.</p>
+</div>
+
+<div class="service-card">
+  <div class="service-icon">🎯</div>
+  <h3>Interview Training</h3>
+  <p>Professional preparation for company interviews.</p>
+</div>
+
+<div class="service-card">
+  <div class="service-icon">📄</div>
+  <h3>Visa & Document Support</h3>
+  <p>Guidance for visa and employment documentation.</p>
+</div>
+
+<div class="service-card">
+  <div class="service-icon">✈️</div>
+  <h3>Travel Guidance</h3>
+  <p>Assistance and guidance for overseas travel.</p>
+</div>
+
+<div class="service-card">
+  <div class="service-icon">💼</div>
+  <h3>Career Consultation</h3>
+  <p>Career guidance according to candidate skills.</p>
+</div>
+
+<div class="service-card">
+  <div class="service-icon">📞</div>
+  <h3>24/7 Support</h3>
+  <p>Candidate support and assistance when required.</p>
+</div>
+
+  </div></section><!-- REQUIREMENT --><section id="requirement">  <div class="section-title">
+    <h2>Latest Requirements</h2>
+    <span></span>
+  </div>  <div class="requirement-box"><h3>📋 Company Requirements</h3>
+
+<p>
+  Latest overseas job requirements and interview information
+  will be displayed here.
+</p>
+
+<div class="no-requirement">
+  No Company Requirement Available
+</div>
+
+  </div></section><!-- CONTACT --><section id="contact">  <div class="section-title">
+    <h2>Contact Us</h2>
+    <span></span>
+  </div>  <div class="contact-container"><div class="contact-box">
+
+  <h3>ST&TC Mirganj</h3>
+
+  <div class="contact-item">
+    📍 <strong>Address:</strong><br>
+    Sabya Road, Kaparpura, Mirganj,<br>
+    Gopalganj, Bihar - 841438, India
+  </div>
+
+  <div class="contact-item">
+    📞 <strong>Mobile:</strong><br>
+    <a href="tel:7870820014">7870820014</a><br>
+    <a href="tel:9199453782">9199453782</a>
+  </div>
+
+  <div class="contact-item">
+    📧 <strong>Email:</strong><br>
+    <a href="mailto:bipin11669@gmail.com">
+      bipin11669@gmail.com
+    </a>
+  </div>
+
+  <div class="contact-item">
+    🧾 <strong>Registration No.:</strong><br>
+    BR-13-0006578
+  </div>
+
+</div>
+
+
+<div class="contact-box">
+
+  <h3>Get In Touch</h3>
+
+  <p>
+    For job requirements, interview information,
+    documentation support or career guidance,
+    contact us directly.
+  </p>
+
+  <div class="contact-buttons">
+
+    <a href="tel:7870820014" class="btn btn-primary">
+      📞 Call 7870820014
+    </a>
+
+    <a href="https://wa.me/917870820014"
+       target="_blank"
+       class="btn btn-primary">
+      💬 WhatsApp Us
+    </a>
+
+    <a href="https://maps.app.goo.gl/DeiGUHTAc81dwhoy5"
+       target="_blank"
+       class="btn btn-light">
+      📍 Open Google Maps
+    </a>
+
+  </div>
+
+</div>
+
+  </div>  <div class="location-card">
+    <h3>📍 Visit Our Centre</h3>
+    <p>
+      Sabya Road, Kaparpura, Mirganj, Gopalganj, Bihar - 841438
+    </p><a href="https://maps.app.goo.gl/DeiGUHTAc81dwhoy5"
+   target="_blank"
+   class="btn btn-primary">
+  Open Location
+</a>
+
+  </div></section><!-- FOOTER --><footer>  <h3>ST&TC</h3>  <p>
+    SHUBHAM TEST & TRAINING CENTRE
+  </p>  <p>
+    Sabya Road, Kaparpura, Mirganj,
+    Gopalganj, Bihar - 841438
+  </p>  <p class="footer-phone">
+    📞 7870820014 &nbsp; | &nbsp; 9199453782
+  </p>  <p>
+    Reg. No. BR-13-0006578
+  </p>  <br>  <p>
+    © 2026 ST&TC Mirganj. All Rights Reserved.
+  </p></footer></body>
+</html>
