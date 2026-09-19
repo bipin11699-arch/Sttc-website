@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,6 +94,7 @@ nav a:hover{
   color:#ffd34f;
 }
 
+
 /* HERO */
 
 .hero{
@@ -168,6 +168,7 @@ nav a:hover{
   box-shadow:0 7px 18px rgba(0,0,0,.25);
 }
 
+
 /* SECTIONS */
 
 section{
@@ -196,6 +197,7 @@ section{
   border-radius:10px;
 }
 
+
 /* ABOUT */
 
 .about-box{
@@ -221,6 +223,7 @@ section{
   font-weight:bold;
   margin-top:5px;
 }
+
 
 /* SERVICES */
 
@@ -259,6 +262,7 @@ section{
   font-size:15px;
 }
 
+
 /* REQUIREMENT */
 
 .requirement-box{
@@ -281,7 +285,8 @@ section{
   margin-bottom:18px;
 }
 
-/* FIREBASE REQUIREMENT GRID */
+
+/* GITHUB REQUIREMENT GRID */
 
 .requirement-grid{
   display:grid;
@@ -297,6 +302,7 @@ section{
   border-radius:15px;
   box-shadow:0 5px 18px rgba(0,0,0,.10);
   border:1px solid #e6e6e6;
+  overflow:hidden;
 }
 
 .requirement-card h4{
@@ -318,6 +324,11 @@ section{
   border-radius:10px;
   background:#f4f6f8;
   cursor:pointer;
+  transition:.25s;
+}
+
+.requirement-card img:hover{
+  transform:scale(1.01);
 }
 
 .loading{
@@ -337,6 +348,41 @@ section{
   color:#555;
   font-weight:bold;
 }
+
+
+/* IMAGE VIEWER */
+
+.image-viewer{
+  display:none;
+  position:fixed;
+  z-index:9999;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.92);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.image-viewer img{
+  max-width:95%;
+  max-height:90%;
+  object-fit:contain;
+  border-radius:8px;
+}
+
+.close-viewer{
+  position:absolute;
+  top:10px;
+  right:20px;
+  color:#fff;
+  font-size:42px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
 
 /* CONTACT */
 
@@ -378,6 +424,7 @@ section{
   margin-top:20px;
 }
 
+
 /* LOCATION */
 
 .location-card{
@@ -388,6 +435,7 @@ section{
   text-align:center;
   box-shadow:0 7px 25px rgba(0,0,0,.07);
 }
+
 
 /* FOOTER */
 
@@ -415,6 +463,7 @@ footer p{
   font-weight:bold;
   color:#ffd34f;
 }
+
 
 /* MOBILE */
 
@@ -486,6 +535,7 @@ footer p{
 </head>
 
 <body>
+
 
 <!-- HEADER -->
 
@@ -607,6 +657,7 @@ Registration No.: BR-13-0006578
 
 <div class="services">
 
+
 <div class="service-card">
 
 <div class="service-icon">🌍</div>
@@ -683,6 +734,7 @@ Candidate support and assistance when required.
 </p>
 
 </div>
+
 
 </div>
 
@@ -893,154 +945,269 @@ Reg. No. BR-13-0006578
 </footer>
 
 
-<!-- FIREBASE REQUIREMENT SYSTEM -->
+<!-- IMAGE VIEWER -->
 
-<script type="module">
+<div id="imageViewer" class="image-viewer">
 
-import {
-  initializeApp
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+<span class="close-viewer"
+onclick="closeImage()">
+×
+</span>
 
+<img id="viewerImage"
+src=""
+alt="Requirement Image">
 
-import {
-  getStorage,
-  ref,
-  getDownloadURL
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+</div>
 
 
-/* FIREBASE CONFIG */
+<!-- GITHUB REQUIREMENT SYSTEM -->
 
-const firebaseConfig = {
+<script>
 
-  apiKey:
-  "AIzaSyAoO-SZ2Gf8ZmVCmipJk_Nk_eqj0Jfvj8",
+/*
+=================================================
+GITHUB REQUIREMENT IMAGES
+=================================================
 
-  authDomain:
-  "sttc-e9997.firebaseapp.com",
+GitHub repository:
 
-  projectId:
-  "sttc-e9997",
+bipin11699-arch/Sttc-website
 
-  storageBucket:
-  "sttc-e9997.firebasestorage.app",
+Images folder:
 
-  messagingSenderId:
-  "52519358254",
+requirements/
 
-  appId:
-  "1:52519358254:web:e8caef95acd2b8f90f34bf",
+Image names:
 
-  measurementId:
-  "G-X19EVTMSJP"
+requirement1.jpg
+requirement2.jpg
+requirement3.jpg
+...
 
-};
+=================================================
+*/
 
-
-const app = initializeApp(firebaseConfig);
-
-const storage = getStorage(app);
+const githubBase =
+"https://raw.githubusercontent.com/bipin11699-arch/Sttc-website/main/requirements/";
 
 
-/* REQUIREMENT LOAD */
+/*
+Maximum 20 requirement images.
+अगर बाद में और images चाहिए तो यहाँ नाम जोड़ सकते हैं।
+*/
 
-async function loadRequirements(){
+const requirementImages = [
 
-  const grid =
-    document.getElementById("requirementGrid");
+  "requirement1.jpg",
+  "requirement2.jpg",
+  "requirement3.jpg",
+  "requirement4.jpg",
+  "requirement5.jpg",
+  "requirement6.jpg",
+  "requirement7.jpg",
+  "requirement8.jpg",
+  "requirement9.jpg",
+  "requirement10.jpg",
+  "requirement11.jpg",
+  "requirement12.jpg",
+  "requirement13.jpg",
+  "requirement14.jpg",
+  "requirement15.jpg",
+  "requirement16.jpg",
+  "requirement17.jpg",
+  "requirement18.jpg",
+  "requirement19.jpg",
+  "requirement20.jpg"
 
-  const status =
-    document.getElementById("requirementStatus");
-
-  let found = 0;
-
-
-  for(let i=1; i<=10; i++){
-
-    try{
-
-      const fileRef =
-        ref(
-          storage,
-          "requirements/requirement" + i + ".jpg"
-        );
-
-
-      const url =
-        await getDownloadURL(fileRef);
-
-
-      found++;
-
-
-      const card =
-        document.createElement("div");
-
-      card.className =
-        "requirement-card";
+];
 
 
-      card.innerHTML = `
+const grid =
+document.getElementById("requirementGrid");
 
-        <h4>
-          Requirement ${i}
-        </h4>
-
-        <a href="${url}" target="_self">
-
-          <img
-            src="${url}"
-            alt="Requirement ${i}"
-            loading="lazy"
-          >
-
-        </a>
-
-      `;
+const status =
+document.getElementById("requirementStatus");
 
 
-      grid.appendChild(card);
+let foundImages = 0;
 
 
-    }catch(error){
+/*
+Load each GitHub image
+*/
 
-      /*
-        File नहीं है तो कुछ नहीं दिखाएँगे।
-        अगले Requirement पर चले जाएँगे।
-      */
+requirementImages.forEach((file,index)=>{
 
-      console.log(
-        "Requirement " + i + " not available"
-      );
-
-    }
-
-  }
+  const imageUrl =
+    githubBase + file;
 
 
-  if(found === 0){
+  const img =
+    new Image();
 
-    status.innerHTML =
-      "No Company Requirement Available";
 
-    status.className =
-      "no-requirement";
+  img.onload = function(){
 
-  }else{
+    foundImages++;
+
+
+    const card =
+      document.createElement("div");
+
+
+    card.className =
+      "requirement-card";
+
+
+    card.innerHTML = `
+
+      <h4>
+        Requirement ${index + 1}
+      </h4>
+
+      <a href="javascript:void(0)"
+         onclick="openImage('${imageUrl}')">
+
+        <img
+          src="${imageUrl}"
+          alt="Requirement ${index + 1}"
+          loading="lazy"
+        >
+
+      </a>
+
+    `;
+
+
+    grid.appendChild(card);
+
 
     status.style.display =
       "none";
 
-  }
+  };
+
+
+  img.onerror = function(){
+
+    /*
+    Image नहीं मिली तो कुछ नहीं करेंगे।
+    */
+
+    console.log(
+      "Not found:",
+      file
+    );
+
+
+    /*
+    अगर कोई भी image नहीं मिली,
+    तो message दिखाएँगे।
+    */
+
+    setTimeout(function(){
+
+      if(foundImages === 0){
+
+        status.innerHTML =
+          "No Company Requirement Currently Available";
+
+        status.className =
+          "no-requirement";
+
+        status.style.display =
+          "inline-block";
+
+      }
+
+    },500);
+
+  };
+
+
+  img.src =
+    imageUrl;
+
+});
+
+
+/*
+OPEN FULL IMAGE
+*/
+
+function openImage(url){
+
+  const viewer =
+    document.getElementById("imageViewer");
+
+  const viewerImage =
+    document.getElementById("viewerImage");
+
+
+  viewerImage.src =
+    url;
+
+
+  viewer.style.display =
+    "flex";
 
 }
 
 
-/* START */
+/*
+CLOSE FULL IMAGE
+*/
 
-loadRequirements();
+function closeImage(){
+
+  const viewer =
+    document.getElementById("imageViewer");
+
+  const viewerImage =
+    document.getElementById("viewerImage");
+
+
+  viewer.style.display =
+    "none";
+
+
+  viewerImage.src =
+    "";
+
+}
+
+
+/*
+Close image by clicking outside image
+*/
+
+document.getElementById("imageViewer")
+.addEventListener("click",function(event){
+
+  if(event.target === this){
+
+    closeImage();
+
+  }
+
+});
+
+
+/*
+Close image with phone/browser back style
+ESC key also works on computer.
+*/
+
+document.addEventListener("keydown",function(event){
+
+  if(event.key === "Escape"){
+
+    closeImage();
+
+  }
+
+});
 
 </script>
 
