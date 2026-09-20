@@ -285,9 +285,6 @@ section{
   margin-bottom:18px;
 }
 
-
-/* GITHUB REQUIREMENT GRID */
-
 .requirement-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -961,66 +958,17 @@ alt="Requirement Image">
 </div>
 
 
-<!-- GITHUB REQUIREMENT SYSTEM -->
+<!-- =================================================
+     GITHUB REQUIREMENT AUTO SYSTEM
+     ================================================= -->
 
 <script>
 
-/*
-=================================================
-GITHUB REQUIREMENT IMAGES
-=================================================
+const GITHUB_API =
+"https://api.github.com/repos/bipin11699-arch/Sttc-website/contents/Requirement";
 
-GitHub repository:
-
-bipin11699-arch/Sttc-website
-
-Images folder:
-
-requirements/
-
-Image names:
-
-requirement1.jpg
-requirement2.jpg
-requirement3.jpg
-...
-
-=================================================
-*/
-
-const githubBase =
-"https://raw.githubusercontent.com/bipin11699-arch/Sttc-website/main/requirements/";
-
-
-/*
-Maximum 20 requirement images.
-अगर बाद में और images चाहिए तो यहाँ नाम जोड़ सकते हैं।
-*/
-
-const requirementImages = [
-
-  "requirement1.jpg",
-  "requirement2.jpg",
-  "requirement3.jpg",
-  "requirement4.jpg",
-  "requirement5.jpg",
-  "requirement6.jpg",
-  "requirement7.jpg",
-  "requirement8.jpg",
-  "requirement9.jpg",
-  "requirement10.jpg",
-  "requirement11.jpg",
-  "requirement12.jpg",
-  "requirement13.jpg",
-  "requirement14.jpg",
-  "requirement15.jpg",
-  "requirement16.jpg",
-  "requirement17.jpg",
-  "requirement18.jpg",
-  "requirement19.jpg",
-  "requirement20.jpg"
-
-];
+const RAW_BASE =
+"https://raw.githubusercontent.com/bipin11699-arch/Sttc-website/main/Requirement";
 
 
 const grid =
@@ -1030,27 +978,60 @@ const status =
 document.getElementById("requirementStatus");
 
 
-let foundImages = 0;
+fetch(GITHUB_API)
+
+.then(response => {
+
+  if(!response.ok){
+
+    throw new Error(
+      "GitHub Requirement folder not found"
+    );
+
+  }
+
+  return response.json();
+
+})
 
 
-/*
-Load each GitHub image
-*/
+.then(files => {
 
-requirementImages.forEach((file,index)=>{
+  const images =
+    files.filter(file => {
 
-  const imageUrl =
-    githubBase + file;
+      const name =
+        file.name.toLowerCase();
+
+      return file.type === "file" &&
+      (
+        name.endsWith(".jpg") ||
+        name.endsWith(".jpeg") ||
+        name.endsWith(".png") ||
+        name.endsWith(".webp")
+      );
+
+    });
 
 
-  const img =
-    new Image();
+  if(images.length === 0){
+
+    status.textContent =
+      "No Company Requirement Currently Available";
+
+    status.className =
+      "no-requirement";
+
+    return;
+
+  }
 
 
-  img.onload = function(){
+  status.style.display =
+    "none";
 
-    foundImages++;
 
+  images.forEach((file,index) => {
 
     const card =
       document.createElement("div");
@@ -1060,17 +1041,25 @@ requirementImages.forEach((file,index)=>{
       "requirement-card";
 
 
+    const imageURL =
+      RAW_BASE +
+      "/" +
+      encodeURIComponent(file.name);
+
+
     card.innerHTML = `
 
       <h4>
         Requirement ${index + 1}
       </h4>
 
-      <a href="javascript:void(0)"
-         onclick="openImage('${imageUrl}')">
+      <a
+        href="javascript:void(0)"
+        onclick="openImage('${imageURL}')"
+      >
 
         <img
-          src="${imageUrl}"
+          src="${imageURL}"
           alt="Requirement ${index + 1}"
           loading="lazy"
         >
@@ -1082,64 +1071,33 @@ requirementImages.forEach((file,index)=>{
 
     grid.appendChild(card);
 
+  });
 
-    status.style.display =
-      "none";
-
-  };
+})
 
 
-  img.onerror = function(){
+.catch(error => {
 
-    /*
-    Image नहीं मिली तो कुछ नहीं करेंगे।
-    */
-
-    console.log(
-      "Not found:",
-      file
-    );
+  console.error(error);
 
 
-    /*
-    अगर कोई भी image नहीं मिली,
-    तो message दिखाएँगे।
-    */
-
-    setTimeout(function(){
-
-      if(foundImages === 0){
-
-        status.innerHTML =
-          "No Company Requirement Currently Available";
-
-        status.className =
-          "no-requirement";
-
-        status.style.display =
-          "inline-block";
-
-      }
-
-    },500);
-
-  };
+  status.textContent =
+    "Requirements are temporarily unavailable.";
 
 
-  img.src =
-    imageUrl;
+  status.className =
+    "no-requirement";
 
 });
 
 
-/*
-OPEN FULL IMAGE
-*/
+/* OPEN FULL IMAGE */
 
 function openImage(url){
 
   const viewer =
     document.getElementById("imageViewer");
+
 
   const viewerImage =
     document.getElementById("viewerImage");
@@ -1155,14 +1113,13 @@ function openImage(url){
 }
 
 
-/*
-CLOSE FULL IMAGE
-*/
+/* CLOSE FULL IMAGE */
 
 function closeImage(){
 
   const viewer =
     document.getElementById("imageViewer");
+
 
   const viewerImage =
     document.getElementById("viewerImage");
@@ -1178,36 +1135,37 @@ function closeImage(){
 }
 
 
-/*
-Close image by clicking outside image
-*/
+/* CLICK OUTSIDE TO CLOSE */
 
 document.getElementById("imageViewer")
-.addEventListener("click",function(event){
+.addEventListener(
+  "click",
+  function(event){
 
-  if(event.target === this){
+    if(event.target === this){
 
-    closeImage();
+      closeImage();
 
-  }
-
-});
-
-
-/*
-Close image with phone/browser back style
-ESC key also works on computer.
-*/
-
-document.addEventListener("keydown",function(event){
-
-  if(event.key === "Escape"){
-
-    closeImage();
+    }
 
   }
+);
 
-});
+
+/* ESC KEY */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+
+      closeImage();
+
+    }
+
+  }
+);
 
 </script>
 
